@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block section %}
+<div class ="col-12 list-container">
+{% if team_list %}
+<ul>
+    {% for team in team_list %}
+       <li> <a href = {% url "team:team-details" team.id %}>{{team}}</a> </li>
+    {% endfor %}
+{% elif user.team_assigned %}
+   <li> {{ user.team_assigned }}</li>
+{% else %}
+    You are not assigned in any team.
+    </ul>
+{% endif %}
+</div>
+<div class = "col-12 button-container">
+<button type="button" class="btn btn-success"><a href = {% url "team:team-creation" %}>Add Team </a></button>
+</div>
+ 
+{% endblock %}
